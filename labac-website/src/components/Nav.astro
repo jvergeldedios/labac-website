@@ -10,13 +10,31 @@ const navItems = [
     children: [
       { label: 'Schedule', href: '/meetings' },
       { label: 'Agendas & Minutes', href: '/meetings/minutes' },
+      { label: 'Council Files', href: '/meetings/council-files' },
+    ],
+  },
+  {
+    label: 'Sub-Committees',
+    href: '/committees',
+    children: [
+      { label: 'Planning & Bikeways', href: '/committees/planning' },
+      { label: 'Advocacy & Education', href: '/committees/advocacy' },
     ],
   },
   { label: 'Members', href: '/members' },
+  {
+    label: 'Resources',
+    href: '/resources',
+    children: [
+      { label: 'General Resources', href: '/resources' },
+      { label: 'Classifications', href: '/resources/classifications' },
+      { label: 'Bicycle Clubs', href: '/resources/clubs' },
+      { label: 'Maps & Routes', href: '/maps' },
+    ],
+  },
   { label: 'Get Involved', href: '/get-involved' },
   { label: 'News', href: '/news' },
   { label: 'Events', href: '/events' },
-  { label: 'FAQ', href: '/faq' },
   { label: 'Contact', href: '/contact' },
 ];
 

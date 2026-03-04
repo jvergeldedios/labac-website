@@ -2,7 +2,7 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import { getCollection } from 'astro:content';
 
-const meetings = (await getCollection('minutes', ({ data }) => !data.draft))
+const meetings = (await getCollection('minutes', ({ data }) => !data.draft && data.committee === 'full'))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
@@ -24,13 +24,16 @@ const meetings = (await getCollection('minutes', ({ data }) => !data.draft))
           <span class="ml-2 text-xs uppercase tracking-wide text-text-muted bg-gray-100 px-2 py-0.5 rounded">
             {meeting.data.meetingType}
           </span>
-          <div class="flex gap-3 mt-2 text-sm">
+          <div class="flex flex-wrap gap-3 mt-2 text-sm">
             {meeting.data.agendaUrl && (
               <a href={meeting.data.agendaUrl} class="text-primary hover:underline" target="_blank" rel="noopener">Agenda (PDF)</a>
             )}
             {meeting.data.minutesUrl && (
               <a href={meeting.data.minutesUrl} class="text-primary hover:underline" target="_blank" rel="noopener">Minutes (PDF)</a>
             )}
+            {meeting.data.supplementaryUrls?.map((s) => (
+              <a href={s.url} class="text-accent hover:underline" target="_blank" rel="noopener">{s.label}</a>
+            ))}
           </div>
         </div>
       ))}

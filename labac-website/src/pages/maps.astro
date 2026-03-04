@@ -1,24 +1,59 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
+
+const maps = [
+  { name: 'CalBike - California Bike Maps', url: 'https://www.calbike.org/go_for_a_ride/map_routes/', category: 'Regional' },
+  { name: 'LADOT Bike Program Maps', url: 'https://ladotlivablestreets.org/programs/active-transportation/maps', category: 'Regional' },
+  { name: 'LA Metro Bike Map', url: 'https://media.metro.net/riding_metro/bikes/images/bike_map_la.pdf', category: 'Regional' },
+  { name: 'Los Angeles County Bikeways Map', url: 'https://dpw.lacounty.gov/pdd/bike/map.cfm', category: 'Regional' },
+  { name: 'LA County Bicycle Coalition Self-Guided Rides', url: 'https://www.la-bike.org/self-guided-rides', category: 'Regional' },
+  { name: 'Los Angeles California Bike Paths', url: 'https://labikepaths.com/', category: 'Regional' },
+  { name: 'Beverly Hills Bike Trails', url: 'https://www.mapmyride.com/us/beverly-hills-ca/', category: 'City' },
+  { name: 'Malibu Bike Trails', url: 'https://www.mapmyride.com/us/malibu-ca/', category: 'City' },
+  { name: 'Ballona Creek Path (Culver City)', url: 'http://ballonacreek.org/bike-path/', category: 'City' },
+  { name: 'Culver Boulevard Bike Trail', url: 'https://www.traillink.com/trail/culver-boulevard-bike-path/', category: 'City' },
+  { name: 'City of Santa Monica', url: 'https://www.smgov.net/uploadedFiles/Departments/ISD/GIS/Maps_PDF/bikemap.pdf', category: 'City' },
+  { name: 'City of Pasadena', url: 'http://apps.mycitybikes.org/CA-Pasadena/map/map.html', category: 'City' },
+  { name: 'City of South Pasadena', url: 'https://www.mapmyride.com/us/south-pasadena-ca/', category: 'City' },
+  { name: 'City of Torrance', url: 'https://www.bikemap.net/en/l/5403022/', category: 'City' },
+  { name: 'Sepulveda Basin Bike Path', url: 'https://www.laparks.org/info/biking/sanfernando_biking', category: 'City' },
+  { name: 'City of Santa Clarita', url: 'https://maps.santa-clarita.com/portal/apps/webappviewer/index.html?id=908a70535153452d97802ea62318d343', category: 'City' },
+  { name: 'City of Long Beach', url: 'http://www.longbeach.gov/globalassets/pw/media-library/documents/lb-bike-map-final-2017', category: 'City' },
+  { name: 'City of Burbank', url: 'https://www.burbankca.gov/documents/173607/240347/20210324-Burbank-Bike-Map-003.pdf', category: 'City' },
+  { name: 'City of Glendale', url: 'https://www.glendaleca.gov/home/showdocument?id=21930', category: 'City' },
+  { name: 'Calabasas Trails', url: 'http://www.venturacountytrails.org/TrailMaps/Calabasas/AreaTrails.htm', category: 'City' },
+  { name: 'Griffith Park Cycling Guide', url: 'https://www.discoverlosangeles.com/things-to-do/the-guide-to-biking-in-griffith-park', category: 'Trails' },
+  { name: 'Santa Monica Mountains', url: 'https://www.epicroadrides.com/destinations/cycling-usa/santa-monica-mountains-national-park/', category: 'Trails' },
+  { name: 'SoCal Cycling GPS Rides & Trails', url: 'https://socalcycling.com/gps-rides/', category: 'Trails' },
+  { name: 'TrailLink - Top 10 LA Bike Trails', url: 'https://www.traillink.com/trail-traveler/the-best-bike-trails-in-los-angeles/', category: 'Trails' },
+  { name: 'Strava Heatmap', url: 'https://www.strava.com/heatmap#7.00/-120.90000/38.36000/undefined/undefined', category: 'Tools' },
+  { name: 'Strava LA Cycling Guide', url: 'https://www.strava.com/local/us/la/cycling#region-description', category: 'Tools' },
+  { name: 'Bikemap - Los Angeles', url: 'https://www.bikemap.net/en/l/5368361/', category: 'Tools' },
+];
+
+const categories = ['Regional', 'City', 'Trails', 'Tools'];
 ---
 
 <PageLayout title="Maps & Routes" description="Bike maps, routes, and cycling infrastructure resources for Los Angeles.">
   <p class="text-lg text-text-muted mb-6">
-    Explore cycling routes and infrastructure across Los Angeles.
+    Bicycle maps and routes for the City and County of Los Angeles.
   </p>
 
-  <h2 class="text-xl font-semibold text-primary mt-8 mb-3">LA City Bike Map</h2>
-  <p class="text-text-muted mb-4">
-    The City of Los Angeles maintains an official bike map showing bike lanes, paths, and routes throughout the city.
-  </p>
-
-  <h2 class="text-xl font-semibold text-primary mt-8 mb-3">Metro Bike Share</h2>
-  <p class="text-text-muted mb-4">
-    Metro Bike Share provides short-term bicycle rentals at stations across Los Angeles, with options for single rides, daily passes, and monthly memberships.
-  </p>
-
-  <h2 class="text-xl font-semibold text-primary mt-8 mb-3">Popular Routes</h2>
-  <p class="text-text-muted mb-4">
-    Coming soon — a curated list of popular cycling routes in the LA area.
-  </p>
+  {categories.map((cat) => (
+    <div>
+      <h2 class="text-xl font-semibold text-primary mt-8 mb-3">
+        {cat === 'Regional' ? 'LA County & Regional Maps' :
+         cat === 'City' ? 'City-Specific Maps' :
+         cat === 'Trails' ? 'Trails & Rides' :
+         'Apps & Tools'}
+      </h2>
+      <ul class="list-disc pl-6 text-text-muted space-y-2 mb-6">
+        {maps.filter(m => m.category === cat).map((m) => (
+          <li>
+            <a href={m.url} class="text-primary hover:underline" target="_blank" rel="noopener">{m.name}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
 </PageLayout>

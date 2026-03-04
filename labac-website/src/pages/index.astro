@@ -2,20 +2,29 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Home" description="Los Angeles Bicycle Advisory Committee — advising the City of LA on bicycle transportation since 1975.">
+<BaseLayout title="Home" description="Los Angeles Bicycle Advisory Committee — advising the City of LA on bicycle transportation since 1973.">
   <section class="bg-primary text-white py-12">
     <div class="max-w-4xl mx-auto px-4 text-center">
       <h1 class="text-4xl font-bold mb-4">Los Angeles Bicycle Advisory Committee</h1>
-      <p class="text-lg text-white/80 mb-6">Advising the City of Los Angeles on bicycle transportation since 1975</p>
+      <p class="text-lg text-white/80 mb-6">Advising the City of Los Angeles on bicycle transportation since 1973</p>
       <div class="bg-white/10 rounded-lg p-6 inline-block">
-        <p class="text-sm uppercase tracking-wide text-white/70 mb-1">Next Meeting</p>
-        <p class="text-2xl font-bold">Coming Soon</p>
-        <p class="text-sm text-white/70 mt-1">City Hall, 200 N Spring St, Los Angeles</p>
+        <p class="text-sm uppercase tracking-wide text-white/70 mb-1">Next General Meeting</p>
+        <p class="text-2xl font-bold">April 7, 2026</p>
+        <p class="text-sm text-white/70 mt-1">7 PM &mdash; Hollywood Neighborhood City Hall, 6501 Fountain Ave</p>
       </div>
     </div>
   </section>
 
-  <section class="max-w-4xl mx-auto px-4 py-12">
+  <section class="max-w-4xl mx-auto px-4 py-8">
+    <div class="bg-accent/10 border border-accent/30 rounded-lg p-4 text-center">
+      <p class="text-sm text-text-muted mb-2">Help us improve cycling in LA!</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdo6J9iQyoouPEe5LWvhEyYgc2YhdfDZ3RGq8lMmqpy2ls9rA/viewform?usp=header" class="text-primary font-medium hover:underline" target="_blank" rel="noopener">Take the "Your Ride, Your City" Survey</a>
+      <span class="text-text-muted mx-2">|</span>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfQVdJGCFPhbYmPz5ssV16E-SzFWw6E9IWutccFm6ptlP2Kpw/viewform?usp=header" class="text-primary font-medium hover:underline" target="_blank" rel="noopener">Encuesta en Espa&ntilde;ol</a>
+    </div>
+  </section>
+
+  <section class="max-w-4xl mx-auto px-4 py-8">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <a href="/get-involved" class="block p-6 border border-border rounded-lg hover:border-primary hover:shadow-sm transition-all">
         <h2 class="text-lg font-semibold text-primary mb-2">Get Involved</h2>
@@ -25,9 +34,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <h2 class="text-lg font-semibold text-primary mb-2">Meetings</h2>
         <p class="text-sm text-text-muted">View the schedule, agendas, and minutes from past meetings.</p>
       </a>
-      <a href="/news" class="block p-6 border border-border rounded-lg hover:border-primary hover:shadow-sm transition-all">
-        <h2 class="text-lg font-semibold text-primary mb-2">News & Updates</h2>
-        <p class="text-sm text-text-muted">Stay up to date on committee actions and LA cycling news.</p>
+      <a href="/resources" class="block p-6 border border-border rounded-lg hover:border-primary hover:shadow-sm transition-all">
+        <h2 class="text-lg font-semibold text-primary mb-2">Resources</h2>
+        <p class="text-sm text-text-muted">Cycling guides, maps, bike parking info, and advocacy organizations.</p>
       </a>
     </div>
   </section>
@@ -36,9 +45,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="max-w-4xl mx-auto px-4 text-center">
       <h2 class="text-2xl font-bold text-primary mb-4">About LABAC</h2>
       <p class="text-text-muted max-w-2xl mx-auto">
-        The Los Angeles Bicycle Advisory Committee (LABAC) advises the City of Los Angeles on policies, programs, and projects that affect bicycle transportation. Established in 1975, we work to make cycling safer and more accessible for all Angelenos.
+        The BAC acts in an advisory capacity to the Mayor, City Council Members, and the various agencies of the government of the City of Los Angeles in the encouragement and facilitation of the use of the bicycle as regular means of transportation and recreation.
       </p>
       <a href="/about" class="inline-block mt-4 text-primary font-medium hover:underline">Learn more &rarr;</a>
+    </div>
+  </section>
+
+  <section class="max-w-4xl mx-auto px-4 py-8 text-center">
+    <h2 class="text-lg font-semibold text-primary mb-3">Follow Us</h2>
+    <div class="flex justify-center gap-6 text-sm">
+      <a href="https://www.facebook.com/LosAngelesBicycleAdvisoryCommittee/" class="text-primary hover:underline" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://twitter.com/BicycleLACity/media" class="text-primary hover:underline" target="_blank" rel="noopener">Twitter / X</a>
+      <a href="https://www.instagram.com/bicyclelacity/" class="text-primary hover:underline" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.youtube.com/channel/UC1TcSpr0y6BHDXJqAS9iaSQ" class="text-primary hover:underline" target="_blank" rel="noopener">YouTube</a>
     </div>
   </section>
 </BaseLayout>

@@ -1,0 +1,31 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+
+const resources = [
+  { name: 'Guide to Parts and Machinery of a Bicycle', url: 'http://www.visualdictionaryonline.com/transport-machinery/road-transport/bicycle/parts-bicycle.php' },
+  { name: 'Design Standards for Class I, II, and III Bikeways', url: 'https://www.cityofamericancanyon.org/home/showdocument?id=3474' },
+  { name: 'Class IV Separated Bikeways (CalBike)', url: 'https://cal.streetsblog.org/wp-content/uploads/sites/13/2016/09/CalBike-Class-IV-Bikeways-Brochure-Final-Web.pdf' },
+  { name: 'Bikeway Classification (Caltrans / LA County)', url: 'https://dpw.lacounty.gov/pdd/bike/map.cfm' },
+  { name: 'Pedestrian & Bicycle Safety (US DOT FHWA)', url: 'https://safety.fhwa.dot.gov/ped_bike/' },
+  { name: 'Electric Bike Class Label Information', url: 'https://b.3cdn.net/bikes/89389af069d71fb389_nzm6bh88i.pdf' },
+  { name: 'Bilingual Glossary of Transportation Terms', url: 'https://ladot.lacity.org/bilingual-glossary-terms' },
+];
+---
+
+<PageLayout title="Bicycle Classifications & Definitions" description="Guides, definitions, and classifications of bicycles, bikeways, e-bikes, and other mobility devices.">
+  <p class="text-lg text-text-muted mb-6">
+    Guides, definitions, and classifications of bicycles, bikeways, e-bikes, and other mobility and technical devices.
+  </p>
+
+  <ul class="list-disc pl-6 text-text-muted space-y-3">
+    {resources.map((r) => (
+      <li>
+        <a href={r.url} class="text-primary hover:underline" target="_blank" rel="noopener">{r.name}</a>
+      </li>
+    ))}
+  </ul>
+
+  <div class="mt-8">
+    <a href="/resources" class="text-primary hover:underline">&larr; Back to Resources</a>
+  </div>
+</PageLayout>

@@ -4,29 +4,48 @@ import PageLayout from '../../layouts/PageLayout.astro';
 
 <PageLayout title="Meeting Schedule" description="LABAC meeting schedule and information.">
   <p class="text-lg text-text-muted mb-6">
-    LABAC meets on the first Tuesday of every even-numbered month at 7:00 PM.
+    LABAC meets on the first Tuesday of every even-numbered month at 7:00 PM. Sub-committees meet during odd months.
   </p>
 
   <div class="bg-primary/5 border border-primary/20 rounded-lg p-6 mb-8">
-    <h2 class="text-lg font-semibold text-primary mb-2">Next Meeting</h2>
-    <p class="text-text-muted">Coming soon — check back for the next meeting date.</p>
+    <h2 class="text-lg font-semibold text-primary mb-2">Next General Meeting</h2>
+    <p class="text-text font-medium">April 7, 2026 at 7:00 PM</p>
+    <p class="text-sm text-text-muted mt-1">Hollywood Neighborhood City Hall Community Room, 6501 Fountain Ave</p>
   </div>
 
-  <h2 class="text-xl font-semibold text-primary mt-8 mb-3">Schedule</h2>
-  <p class="text-text-muted mb-2">Meetings are held in even-numbered months:</p>
-  <ul class="list-disc pl-6 text-text-muted space-y-1 mb-6">
-    <li>February</li>
-    <li>April</li>
-    <li>June</li>
-    <li>August</li>
-    <li>October</li>
-    <li>December</li>
-  </ul>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+    <div class="border border-border rounded-lg p-4">
+      <h3 class="font-semibold text-primary mb-2">General Committee</h3>
+      <p class="text-sm text-text-muted mb-2">1st Tuesday of even months at 7 PM</p>
+      <ul class="list-disc pl-5 text-sm text-text-muted space-y-1">
+        <li>February</li>
+        <li>April</li>
+        <li>June</li>
+        <li>August</li>
+        <li>October</li>
+        <li>December</li>
+      </ul>
+    </div>
+    <div class="border border-border rounded-lg p-4">
+      <h3 class="font-semibold text-primary mb-2">Sub-Committees</h3>
+      <p class="text-sm text-text-muted mb-2">Meet during odd months</p>
+      <ul class="list-disc pl-5 text-sm text-text-muted space-y-1">
+        <li><a href="/committees/planning" class="text-primary hover:underline">Planning & Bikeways Engineering</a></li>
+        <li><a href="/committees/advocacy" class="text-primary hover:underline">Advocacy & Education</a></li>
+      </ul>
+    </div>
+  </div>
 
   <h2 class="text-xl font-semibold text-primary mt-8 mb-3">Location</h2>
   <p class="text-text-muted mb-4">
-    Los Angeles City Hall<br />
-    200 N Spring St, Los Angeles, CA 90012
+    Hollywood Neighborhood City Hall Community Room<br />
+    6501 Fountain Avenue<br />
+    Los Angeles, CA 90028
+  </p>
+
+  <h2 class="text-xl font-semibold text-primary mt-8 mb-3">Public Comment</h2>
+  <p class="text-text-muted mb-4">
+    Public comments can be sent to <a href="mailto:robkadota@gmail.com" class="text-primary hover:underline">robkadota@gmail.com</a> at least two hours prior to the meeting, with "Public Comment" in the subject line.
   </p>
 
   <p class="text-text-muted">

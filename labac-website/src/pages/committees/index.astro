@@ -1,0 +1,25 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+---
+
+<PageLayout title="Sub-Committees" description="LABAC sub-committees — Planning & Bikeways Engineering and Advocacy & Education.">
+  <p class="text-lg text-text-muted mb-6">
+    LABAC has two active sub-committees that meet during odd months.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <a href="/committees/planning" class="block p-6 border border-border rounded-lg hover:border-primary hover:shadow-sm transition-all">
+      <h2 class="text-xl font-semibold text-primary mb-2">Planning &amp; Bikeways Engineering</h2>
+      <p class="text-sm text-text-muted">
+        Reviews bicycle infrastructure projects, bikeway engineering standards, and city planning initiatives related to cycling.
+      </p>
+    </a>
+
+    <a href="/committees/advocacy" class="block p-6 border border-border rounded-lg hover:border-primary hover:shadow-sm transition-all">
+      <h2 class="text-xl font-semibold text-primary mb-2">Advocacy &amp; Education</h2>
+      <p class="text-sm text-text-muted">
+        Connects bicyclists with neighbors and local officials to support a healthy and sustainable city through bicycling as one form of multi-modal transportation.
+      </p>
+    </a>
+  </div>
+</PageLayout>

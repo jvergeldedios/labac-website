@@ -1,0 +1,61 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+
+const councilFiles = [
+  { cf: '19-0606', desc: 'LABAC to add alternate members to the board' },
+  { cf: '15-0719-S17', desc: 'Mobility Plan 2035' },
+  { cf: '17-1142-S1', desc: 'Bicycle Lane Pavement / Network Inspection / State of Good Repair' },
+  { cf: '17-0863', desc: 'Promote Effective Bicycle Registration Program' },
+  { cf: '16-0415', desc: 'Establishment of a Bicycle Traffic School Program' },
+  { cf: '15-0719-S21', desc: 'Inclusion to the Mobility Plan 2035 / Bicycle Enhanced Network' },
+  { cf: '18-0731', desc: 'Arts District / Mobility Strategy' },
+  { cf: '19-1172', desc: 'Vision Zero Initiative / Enhanced Enforcement / Traffic Collisions' },
+  { cf: '19-1373', desc: 'LADOT Report / Mobility Investment Program (MIP)' },
+  { cf: '20-0063', desc: 'US Bicycle Route 95 / Bicycle Tourism / Infrastructure / Routes' },
+  { cf: '20-0723', desc: 'City Bike Paths / Automatic Non-Button Crosswalk Signal Conversion' },
+  { cf: '19-1515', desc: 'Reseda Boulevard Great Street Pilot Project / Evaluation' },
+  { cf: '21-0002-S70', desc: 'AB 122 Safety Stop Bill / California Vehicle Code / Bicycles' },
+  { cf: '21-0002-S75', desc: 'E-BIKE Act / Electric Bicycle Rebate Pilot Project' },
+  { cf: '17-1125', desc: 'Dockless Bike Share Systems / Pilot Program' },
+  { cf: '21-1222', desc: 'Permanent Slow Streets Program / Active Mobility and Recreation' },
+];
+---
+
+<PageLayout title="City Council Files" description="Bicycle-related City of LA Council Files tracked by LABAC.">
+  <p class="text-lg text-text-muted mb-6">
+    Bicycle-related council files tracked by the Los Angeles Bicycle Advisory Committee.
+  </p>
+
+  <p class="text-sm text-text-muted mb-6">
+    Check the status of council files at
+    <a href="https://cityclerk.lacity.org/lacityclerkconnect" class="text-primary hover:underline" target="_blank" rel="noopener">LA City Clerk Connect</a>.
+  </p>
+
+  <div class="overflow-x-auto">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b border-border text-left">
+          <th class="py-2 pr-4 font-semibold text-primary whitespace-nowrap">Council File</th>
+          <th class="py-2 font-semibold text-primary">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        {councilFiles.map((cf) => (
+          <tr class="border-b border-border">
+            <td class="py-2 pr-4 whitespace-nowrap">
+              <a
+                href={`https://cityclerk.lacity.org/lacityclerkconnect/index.cfm?fa=ccfi.viewrecord&cfnumber=${cf.cf}`}
+                class="text-primary hover:underline"
+                target="_blank"
+                rel="noopener"
+              >
+                CF {cf.cf}
+              </a>
+            </td>
+            <td class="py-2 text-text-muted">{cf.desc}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</PageLayout>

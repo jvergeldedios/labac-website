@@ -1,24 +1,107 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
-import { getCollection } from 'astro:content';
 
-const members = await getCollection('members');
-const sortedMembers = members.sort((a, b) => a.data.district - b.data.district);
+const mayoralAppointees = [
+  { name: 'Eli Akira Kaufman', role: 'Member' },
+  { name: 'Glenn Bailey', role: 'Member' },
+  { name: 'Karen Canady', role: 'Member' },
+  { name: 'Rob Kadota', role: 'Chairperson' },
+];
+
+const districtMembers = [
+  { district: 1, council: 'Eunisses Hernandez', rep: 'Jennifer Gill', role: 'Vice Chairperson & Bikeway Engineering Chair', url: 'http://cd1.lacity.org/' },
+  { district: 2, council: 'Paul Krekorian', rep: null, role: null, url: 'http://cd2.lacity.org/' },
+  { district: 3, council: 'Bob Blumenfield', rep: 'Janis Hatlestad', role: 'Member', url: 'http://cd3.lacity.org/' },
+  { district: 4, council: 'Nithya Raman', rep: 'Curtis Graham', role: 'Member', url: 'http://cd4.lacity.org/' },
+  { district: 5, council: 'Katy Yaroslavsky', rep: 'Michael Schneider', role: 'Member', url: 'https://councildistrict5.lacity.gov/' },
+  { district: 6, council: 'Imelda Padilla', rep: 'Lionel Mares', role: 'Member', url: 'http://cd6.lacity.org/' },
+  { district: 7, council: 'Monica Rodriguez', rep: 'John Laue', role: 'Member', url: 'http://cd7.lacity.org/' },
+  { district: 8, council: 'Marqueece Harris-Dawson', rep: 'Aubrey Provost', role: 'Member', url: 'http://cd8.lacity.org/' },
+  { district: 9, council: 'Curren D. Price, Jr.', rep: 'Ade Neff', role: 'Member', url: 'http://cd9.lacity.org/' },
+  { district: 10, council: 'Heather Hutt', rep: null, role: null, url: 'https://councildistrict10.lacity.gov/' },
+  { district: 11, council: 'Traci Park', rep: 'Julian Vergel de Dios', role: 'Member', url: 'https://councildistrict11.lacity.gov/' },
+  { district: 12, council: 'John Lee', rep: null, role: null, url: 'http://cd12.lacity.org/' },
+  { district: 13, council: 'Hugo Soto-Martinez', rep: 'Philip Armstrong', role: 'Member', url: 'http://cd13.lacity.org/' },
+  { district: 14, council: 'Kevin De Leon', rep: null, role: null, url: 'http://cd14.lacity.org/' },
+  { district: 15, council: 'Tim McOsker', rep: null, role: null, url: 'http://cd15.lacity.org/' },
+];
+
+const alternates = [
+  { name: 'Danny Duarte', district: 'CD 3' },
+  { name: 'Taylor Nichols', district: 'CD 5' },
+];
+
+const inMemory = [
+  { name: 'Alex Baum', role: 'Founder & Chair Emeritus', dates: 'Dec 30, 1922 \u2013 Mar 1, 2015' },
+  { name: 'Dana Sherman', role: 'CD 3', dates: 'Died November 20, 2019' },
+];
 ---
 
-<PageLayout title="Current Members" description="Meet the current members of the Los Angeles Bicycle Advisory Committee.">
+<PageLayout title="Committee Members" description="Meet the current members of the Los Angeles Bicycle Advisory Committee.">
   <p class="text-lg text-text-muted mb-6">
-    LABAC members are appointed by City Council members, with each council district represented on the committee.
+    Los Angeles Bicycle Advisory Committee (BAC) members are appointed by each City Council office and the Office of the Mayor.
   </p>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    {sortedMembers.map((member) => (
+  <h2 class="text-xl font-semibold text-primary mt-8 mb-4">Mayoral Appointees</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+    {mayoralAppointees.map((m) => (
       <div class="border border-border rounded-lg p-4">
-        <h2 class="font-semibold text-primary">{member.data.name}</h2>
-        <p class="text-sm text-text-muted">District {member.data.district}</p>
-        {member.data.role && <p class="text-sm text-accent font-medium">{member.data.role}</p>}
-        {member.data.appointedBy && <p class="text-xs text-text-muted mt-1">Appointed by {member.data.appointedBy}</p>}
-        {member.data.term && <p class="text-xs text-text-muted">Term: {member.data.term}</p>}
+        <h3 class="font-semibold text-primary">{m.name}</h3>
+        <p class="text-sm text-text-muted">{m.role}</p>
+        <p class="text-xs text-text-muted mt-1">
+          Appointed by <a href="https://www.lamayor.org/" class="text-primary hover:underline" target="_blank" rel="noopener">Office of the Mayor</a>
+        </p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-xl font-semibold text-primary mt-8 mb-4">Council District Appointees</h2>
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b border-border text-left">
+          <th class="py-2 pr-4 font-semibold text-primary">District</th>
+          <th class="py-2 pr-4 font-semibold text-primary">Council Member</th>
+          <th class="py-2 pr-4 font-semibold text-primary">BAC Representative</th>
+          <th class="py-2 font-semibold text-primary">Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        {districtMembers.map((d) => (
+          <tr class="border-b border-border">
+            <td class="py-2 pr-4">
+              <a href={d.url} class="text-primary hover:underline" target="_blank" rel="noopener">CD {d.district}</a>
+            </td>
+            <td class="py-2 pr-4 text-text-muted">{d.council}</td>
+            <td class="py-2 pr-4 text-text-muted">{d.rep || <span class="italic text-text-muted/60">Vacancy</span>}</td>
+            <td class="py-2 text-text-muted">{d.role || '\u2014'}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <p class="text-sm text-text-muted mb-8">
+    <a href="https://empowerla.org/council-districts-map/" class="text-primary hover:underline" target="_blank" rel="noopener">View Map of City Council Districts</a>
+  </p>
+
+  <h2 class="text-xl font-semibold text-primary mt-8 mb-4">Alternates</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+    {alternates.map((a) => (
+      <div class="border border-border rounded-lg p-4">
+        <h3 class="font-semibold text-primary">{a.name}</h3>
+        <p class="text-sm text-text-muted">{a.district}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-xl font-semibold text-primary mt-8 mb-4">In Memory</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    {inMemory.map((m) => (
+      <div class="border border-border rounded-lg p-4 bg-gray-50">
+        <h3 class="font-semibold text-primary">{m.name}</h3>
+        <p class="text-sm text-text-muted">{m.role}</p>
+        <p class="text-xs text-text-muted mt-1">{m.dates}</p>
       </div>
     ))}
   </div>

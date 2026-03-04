@@ -19,8 +19,13 @@ const minutes = defineCollection({
     title: z.string(),
     date: z.coerce.date(),
     meetingType: z.enum(['regular', 'special']).default('regular'),
-    agendaUrl: z.string().url().optional(),
-    minutesUrl: z.string().url().optional(),
+    committee: z.enum(['full', 'planning', 'advocacy']).default('full'),
+    agendaUrl: z.string().optional(),
+    minutesUrl: z.string().optional(),
+    supplementaryUrls: z.array(z.object({
+      label: z.string(),
+      url: z.string(),
+    })).optional(),
     draft: z.boolean().default(false),
   }),
 });

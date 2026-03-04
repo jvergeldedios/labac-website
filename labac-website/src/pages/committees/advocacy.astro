@@ -1,0 +1,48 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { getCollection } from 'astro:content';
+
+const meetings = (await getCollection('minutes', ({ data }) => !data.draft && data.committee === 'advocacy'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<PageLayout title="Advocacy & Education" description="Advocacy & Education Sub-Committee meeting archive.">
+  <p class="text-lg text-text-muted mb-6">
+    The goal of the Advocacy &amp; Education Committee is to connect bicyclists with neighbors and local officials so that they can support a healthy and sustainable city through bicycling as one form of multi-modal transportation, as well as to encourage safe riding practices within the City of Los Angeles.
+  </p>
+
+  <p class="text-sm text-text-muted mb-6">
+    <a href="https://docs.google.com/document/d/1g2eHVumkUzRrV0d-qFP-3FvZ1HYAiLu1OgkqKCXWAcM/edit?usp=sharing" class="text-primary hover:underline" target="_blank" rel="noopener">View Bicycle-Related City Council Files Document</a>
+  </p>
+
+  <h2 class="text-xl font-semibold text-primary mt-8 mb-4">Meeting Archive</h2>
+
+  {meetings.length === 0 ? (
+    <p class="text-text-muted">No meeting records yet.</p>
+  ) : (
+    <div class="space-y-4">
+      {meetings.map((meeting) => (
+        <div class="border border-border rounded-lg p-4">
+          <h3 class="font-semibold text-primary">{meeting.data.title}</h3>
+          <time class="text-sm text-text-muted" datetime={meeting.data.date.toISOString()}>
+            {meeting.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </time>
+          <span class="ml-2 text-xs uppercase tracking-wide text-text-muted bg-gray-100 px-2 py-0.5 rounded">
+            {meeting.data.meetingType}
+          </span>
+          <div class="flex flex-wrap gap-3 mt-2 text-sm">
+            {meeting.data.agendaUrl && (
+              <a href={meeting.data.agendaUrl} class="text-primary hover:underline" target="_blank" rel="noopener">Agenda (PDF)</a>
+            )}
+            {meeting.data.minutesUrl && (
+              <a href={meeting.data.minutesUrl} class="text-primary hover:underline" target="_blank" rel="noopener">Minutes (PDF)</a>
+            )}
+            {meeting.data.supplementaryUrls?.map((s) => (
+              <a href={s.url} class="text-accent hover:underline" target="_blank" rel="noopener">{s.label}</a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  )}
+</PageLayout>

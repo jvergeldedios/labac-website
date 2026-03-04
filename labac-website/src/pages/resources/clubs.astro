@@ -1,0 +1,139 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+
+const laClubs = [
+  { name: 'Antelope Valley High Desert Cyclists', location: 'Palmdale', url: 'http://www.highdesertcyclists.com/' },
+  { name: 'Beach Cities Cycling Club', location: 'Redondo Beach / South Bay', url: 'http://bccclub.org/' },
+  { name: 'Big Orange', location: 'Southern California', url: 'https://www.bigorangecycling.org/' },
+  { name: 'CBS Cycling Club', location: 'Newhall', url: 'http://www.cbscycling.com/cbs-cycling-club.html' },
+  { name: 'Centurions Cycling Club', location: 'Glendora', url: 'https://team3c.bike/' },
+  { name: 'Concerned Of Road Bicyclists Assoc.', location: 'Sherman Oaks', url: 'http://www.corbamtb.com/' },
+  { name: 'Conejo Valley Cyclist', location: 'Westlake Village', url: 'http://www.cvcbike.org/' },
+  { name: "Crankin' TIME Cycling", location: 'Inglewood', url: 'http://www.crankintimecycling.com/' },
+  { name: "Crank n' Stein Cyclist", location: 'Santa Clarita', url: 'http://www.cranknstein.com/index.html' },
+  { name: 'Different Spokes', location: 'Southern California', url: 'https://www.differentspokes.com/' },
+  { name: 'Over the Bars Mountain Bike Club', location: 'Verdugo Hills', url: 'http://www.otbmbc.com/index.shtml' },
+  { name: 'Delta Pedalers', location: 'Brentwood', url: 'http://www.deltaped.org/' },
+  { name: 'Dockriders Cycling Club', location: 'Marina del Rey', url: 'http://www.dockriders.com/' },
+  { name: 'Eastside Bike Club', location: 'Los Angeles', url: 'https://www.meetup.com/Eastside-Bike-Club/' },
+  { name: 'East Side Riders Bike Club', location: 'Watts', url: 'https://www.esrbc.org/' },
+  { name: 'Foothill Cycle Club', location: 'San Gabriel Valley', url: 'http://www.foothillcycle.org/index.html' },
+  { name: 'Grand Master Cycling Club', location: 'Santa Monica', url: 'https://www.grandmasterscycling.org/' },
+  { name: 'LaGrange', location: 'West Los Angeles', url: 'https://www.lagrange.org/' },
+  { name: 'Los Angeles Bicycle Club', location: 'La Verne', url: 'https://www.facebook.com/losangelesbicycleclub/' },
+  { name: 'Los Angeles Wheelman', location: 'Los Angeles', url: 'http://www.lawheelmen.org/' },
+  { name: 'Major Motion Recreational Cycling', location: 'Southwest Los Angeles', url: 'https://majortaylorcyclingclubla.org' },
+  { name: 'Marina Del Rey Cycle Club', location: 'Marina Del Rey', url: 'http://www.mdrcc.org/' },
+  { name: 'North Ranch Mountain Bikers', location: 'Los Angeles', url: 'http://www.nrmbc.org/' },
+  { name: 'Old Kranks Bicycle Club', location: 'Westlake Village', url: 'https://conejo.com/?to_do=old-kranks-bicycle-club' },
+  { name: 'Peninsula Cycle Club', location: 'Los Angeles / South Bay', url: 'http://peninsulacc.com/' },
+  { name: 'Palos Verdes Bicycle Club', location: 'Palos Verdes', url: 'https://www.pvbikeclub.net/index.html' },
+  { name: 'Ridewitus', location: 'Los Angeles', url: 'https://ridewitus.com/' },
+  { name: 'San Fernando Valley Bicycle Club', location: 'Northridge', url: 'http://www.sfvbc.org/' },
+  { name: 'Santa Clarita Velo', location: 'Santa Clarita', url: 'https://www.santaclaritavelo.org/' },
+  { name: 'SCOR Cardiac Cyclist Club', location: 'Whittier', url: 'http://bikescor.com/' },
+  { name: 'Shifting Gears Los Angeles', location: 'Santa Monica', url: 'http://www.shiftinggearscycling.com/' },
+  { name: 'Serious Cycling Club', location: 'Agoura Hills', url: 'https://www.seriouscycling.com/articles/club-pg185.htm' },
+  { name: 'VC Glendale', location: 'Glendale', url: 'https://www.vcglendale.com/' },
+  { name: 'Velo Allegro Cycling Club', location: 'Long Beach', url: 'http://veloallegro.org/' },
+  { name: 'Velo Club LaGrange', location: 'Santa Monica', url: 'http://www.lagrange.org/' },
+  { name: 'West Los Angeles Cycling Club', location: 'Santa Monica', url: 'http://wlacyclingclub.com/' },
+  { name: 'Women on Bikes', location: 'Culver City', url: 'https://www.facebook.com/groups/118089858878868' },
+];
+
+const caClubs = [
+  { name: 'Almaden Cycle Touring Club', location: 'San Jose', url: 'http://actc.org/' },
+  { name: 'Bicycling Club of Irvine', location: 'Irvine', url: 'http://www.bikeirvine.org/' },
+  { name: 'Big Bear Cycling', location: 'Big Bear Lake', url: 'http://bigbearcycling.com/' },
+  { name: 'Blind Strokers Club', location: 'San Diego', url: 'http://blindstokersclub.org/BSC_website/Homepage.html' },
+  { name: 'Channel Islands Bike Club', location: 'Ventura', url: 'http://www.cibike.org/' },
+  { name: 'Cherry City Cyclists', location: 'San Leandro', url: 'http://www.cherrycitycyclists.org/' },
+  { name: 'Chico Velo', location: 'Chico', url: 'http://www.chicovelo.org/' },
+  { name: 'Cycling Connection', location: 'Rancho Cucamonga', url: 'https://cyclingconnection.org/' },
+  { name: 'Davis Bike Club', location: 'Davis', url: 'http://www.davisbikeclub.org/' },
+  { name: 'Desert Bicycle Club', location: 'Palm Desert', url: 'https://www.cycleclub.com/' },
+  { name: 'Diablo Cyclists', location: 'Walnut Creek', url: 'http://diablocyclists.org/' },
+  { name: 'Fresno Cycling Club', location: 'Fresno', url: 'http://www.fresnocycling.com/' },
+  { name: 'Girlz Gone Riding', location: 'Conejo Valley', url: 'http://www.girlzgoneriding.com/' },
+  { name: 'Goleta Valley Cycling Club', location: 'Goleta', url: 'http://www.goletabike.org/' },
+  { name: 'Kern Wheelmen', location: 'Bakersfield', url: 'https://kernwheelmen.org/' },
+  { name: 'Knickerbikers of San Diego County', location: 'San Diego', url: 'http://www.knickerbikers.com/' },
+  { name: 'Major Taylor Cycling Club', location: 'San Diego', url: 'http://mtccsd.org/' },
+  { name: 'Orange County Wheelmen', location: 'Tustin', url: 'http://www.ocwheelmen.org/' },
+  { name: 'Riverside Bicycle Club', location: 'Riverside', url: 'http://www.riversidebicycleclub.com/' },
+  { name: 'Sacramento Wheelmen', location: 'Sacramento', url: 'https://sacwheelmen.wildapricot.org/' },
+  { name: 'San Diego Bicycle Club', location: 'San Diego', url: 'http://sdbc.org/' },
+  { name: 'Santa Cruz County Cycling Club', location: 'Santa Cruz', url: 'http://santacruzcycling.org/' },
+  { name: 'Swami\'s Cycling Club', location: 'Encinitas', url: 'http://swamis.org/' },
+];
+
+const nationalOrgs = [
+  { name: 'Adventure Cycling Association', url: 'https://www.adventurecycling.org/' },
+  { name: 'League of American Bicyclists', url: 'https://www.bikeleague.org/' },
+  { name: 'USA Cycling', url: 'https://usacycling.org/clubs/' },
+  { name: 'National Clarion Cycling Club', url: 'https://clarioncc.org/' },
+];
+---
+
+<PageLayout title="Bicycle Clubs" description="Directory of bicycle clubs in Los Angeles County, California, and nationally.">
+  <p class="text-lg text-text-muted mb-6">
+    A directory of bicycle clubs for riders of all levels.
+  </p>
+
+  <h2 class="text-xl font-semibold text-primary mt-8 mb-4">Los Angeles County ({laClubs.length} clubs)</h2>
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b border-border text-left">
+          <th class="py-2 pr-4 font-semibold text-primary">Club</th>
+          <th class="py-2 font-semibold text-primary">Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        {laClubs.map((c) => (
+          <tr class="border-b border-border">
+            <td class="py-2 pr-4">
+              <a href={c.url} class="text-primary hover:underline" target="_blank" rel="noopener">{c.name}</a>
+            </td>
+            <td class="py-2 text-text-muted">{c.location}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="text-xl font-semibold text-primary mt-8 mb-4">California ({caClubs.length} clubs)</h2>
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b border-border text-left">
+          <th class="py-2 pr-4 font-semibold text-primary">Club</th>
+          <th class="py-2 font-semibold text-primary">Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        {caClubs.map((c) => (
+          <tr class="border-b border-border">
+            <td class="py-2 pr-4">
+              <a href={c.url} class="text-primary hover:underline" target="_blank" rel="noopener">{c.name}</a>
+            </td>
+            <td class="py-2 text-text-muted">{c.location}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="text-xl font-semibold text-primary mt-8 mb-4">National Organizations</h2>
+  <ul class="list-disc pl-6 text-text-muted space-y-2">
+    {nationalOrgs.map((o) => (
+      <li>
+        <a href={o.url} class="text-primary hover:underline" target="_blank" rel="noopener">{o.name}</a>
+      </li>
+    ))}
+  </ul>
+
+  <div class="mt-8">
+    <a href="/resources" class="text-primary hover:underline">&larr; Back to Resources</a>
+  </div>
+</PageLayout>

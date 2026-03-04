@@ -2,26 +2,38 @@
 import PageLayout from '../layouts/PageLayout.astro';
 ---
 
-<PageLayout title="About" description="Learn about the Los Angeles Bicycle Advisory Committee, its mission, and history since 1975.">
-  <p class="text-lg text-text-muted mb-6">
-    The Los Angeles Bicycle Advisory Committee (LABAC) has been advising the City of Los Angeles on bicycle transportation since 1975.
-  </p>
+<PageLayout title="Mission Statement" description="Learn about the Los Angeles Bicycle Advisory Committee, its mission, and history since 1973.">
+  <p class="text-lg text-text-muted mb-6">Founded in 1973</p>
 
-  <h2 class="text-xl font-semibold text-primary mt-8 mb-3">Our Mission</h2>
-  <p class="text-text-muted mb-4">
-    LABAC advises the Mayor, City Council, and City departments on policies, programs, and projects that affect bicycle transportation in the City of Los Angeles.
-  </p>
-
-  <h2 class="text-xl font-semibold text-primary mt-8 mb-3">History</h2>
-  <p class="text-text-muted mb-4">
-    Established in 1975, LABAC is one of the oldest bicycle advisory committees in the United States. The committee has played a key role in shaping Los Angeles's bicycle infrastructure and policy.
-  </p>
+  <blockquote class="border-l-4 border-primary pl-4 my-6 text-text-muted italic">
+    The purpose of the BAC is to act in an advisory capacity to the Mayor, City Council Members, and the various agencies of the government of the City of Los Angeles in the encouragement and facilitation of the use of the bicycle as regular means of transportation and recreation.
+    <footer class="mt-2 text-sm not-italic font-medium">&mdash; BAC Charter</footer>
+  </blockquote>
 
   <h2 class="text-xl font-semibold text-primary mt-8 mb-3">What We Do</h2>
-  <ul class="list-disc pl-6 text-text-muted space-y-2">
+  <p class="text-text-muted mb-4">
+    The Los Angeles Bicycle Advisory Committee (LABAC) advises the Mayor, City Council, and City departments on policies, programs, and projects that affect bicycle transportation in the City of Los Angeles.
+  </p>
+  <ul class="list-disc pl-6 text-text-muted space-y-2 mb-6">
     <li>Review and comment on bicycle-related projects and plans</li>
-    <li>Advise on the City's Bicycle Plan and Mobility Plan</li>
+    <li>Advise on the City's Bicycle Plan and Mobility Plan 2035</li>
     <li>Provide a public forum for bicycle transportation issues</li>
     <li>Collaborate with LADOT, Metro, and other agencies</li>
+    <li>Advocate for safe and accessible cycling infrastructure</li>
+  </ul>
+
+  <h2 class="text-xl font-semibold text-primary mt-8 mb-3">Meeting Schedule</h2>
+  <p class="text-text-muted mb-4">
+    LABAC meets the first Tuesday of every even month (February, April, June, August, October, December) at 7 PM at the Hollywood Neighborhood City Hall Community Room, 6501 Fountain Avenue, Los Angeles, CA 90028.
+  </p>
+  <p class="text-text-muted mb-4">
+    Sub-committees meet during odd months at various locations.
+  </p>
+
+  <h2 class="text-xl font-semibold text-primary mt-8 mb-3">Key Documents</h2>
+  <ul class="list-disc pl-6 text-text-muted space-y-2">
+    <li><a href="/documents/labac/charter.pdf" class="text-primary hover:underline" target="_blank" rel="noopener">LABAC Charter</a></li>
+    <li><a href="/documents/labac/strategic-plan-2023.pdf" class="text-primary hover:underline" target="_blank" rel="noopener">Strategic Plan 2023</a></li>
+    <li><a href="/documents/labac/resource-guide.pdf" class="text-primary hover:underline" target="_blank" rel="noopener">Bicycling Resource Guide A-to-Z</a></li>
   </ul>
 </PageLayout>
