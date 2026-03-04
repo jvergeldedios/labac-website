@@ -1,0 +1,39 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  date: Date;
+  author?: string;
+  backHref?: string;
+  backLabel?: string;
+}
+
+const {
+  title,
+  description,
+  date,
+  author,
+  backHref = '/news',
+  backLabel = 'Back to News',
+} = Astro.props;
+---
+
+<BaseLayout {title} {description}>
+  <article class="max-w-4xl mx-auto px-4 py-8">
+    <a href={backHref} class="text-sm text-text-muted hover:text-primary mb-4 inline-block">
+      &larr; {backLabel}
+    </a>
+    <h1 class="text-3xl font-bold text-primary mb-2">{title}</h1>
+    <div class="flex gap-4 text-sm text-text-muted mb-6">
+      <time datetime={date.toISOString()}>
+        {date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+      </time>
+      {author && <span>By {author}</span>}
+    </div>
+    <div class="prose max-w-none">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

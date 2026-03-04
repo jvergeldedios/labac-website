@@ -1,0 +1,53 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { getCollection } from 'astro:content';
+
+const events = (await getCollection('events', ({ data }) => !data.draft))
+  .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+
+const now = new Date();
+const upcoming = events.filter((e) => e.data.date >= now);
+const past = events.filter((e) => e.data.date < now);
+---
+
+<PageLayout title="Events" description="Community events, rides, and public comment opportunities.">
+  <h2 class="text-xl font-semibold text-primary mb-4">Upcoming Events</h2>
+  {upcoming.length === 0 ? (
+    <p class="text-text-muted mb-8">No upcoming events. Check back soon!</p>
+  ) : (
+    <div class="space-y-4 mb-8">
+      {upcoming.map((event) => (
+        <article class="border border-border rounded-lg p-6 hover:border-primary/30 transition-colors">
+          <a href={`/events/${event.id}`} class="no-underline">
+            <h3 class="text-lg font-semibold text-primary mb-1">{event.data.title}</h3>
+            <div class="flex flex-wrap gap-3 text-sm text-text-muted mb-2">
+              <time datetime={event.data.date.toISOString()}>
+                {event.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </time>
+              <span>{event.data.location}</span>
+            </div>
+            <p class="text-text-muted">{event.data.description}</p>
+          </a>
+        </article>
+      ))}
+    </div>
+  )}
+
+  {past.length > 0 && (
+    <>
+      <h2 class="text-xl font-semibold text-primary mb-4">Past Events</h2>
+      <div class="space-y-4">
+        {past.map((event) => (
+          <article class="border border-border rounded-lg p-4 opacity-70">
+            <a href={`/events/${event.id}`} class="no-underline">
+              <h3 class="text-base font-semibold text-primary">{event.data.title}</h3>
+              <time class="text-sm text-text-muted" datetime={event.data.date.toISOString()}>
+                {event.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </time>
+            </a>
+          </article>
+        ))}
+      </div>
+    </>
+  )}
+</PageLayout>

@@ -1,0 +1,102 @@
+---
+const currentPath = Astro.url.pathname;
+
+const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  {
+    label: 'Meetings',
+    href: '/meetings',
+    children: [
+      { label: 'Schedule', href: '/meetings' },
+      { label: 'Agendas & Minutes', href: '/meetings/minutes' },
+    ],
+  },
+  { label: 'Members', href: '/members' },
+  { label: 'Get Involved', href: '/get-involved' },
+  { label: 'News', href: '/news' },
+  { label: 'Projects', href: '/projects' },
+  {
+    label: 'Resources',
+    href: '/resources',
+    children: [
+      { label: 'General', href: '/resources' },
+      { label: 'Safety', href: '/resources/safety' },
+    ],
+  },
+  { label: 'Maps & Routes', href: '/maps' },
+  { label: 'Events', href: '/events' },
+  { label: 'FAQ', href: '/faq' },
+  { label: 'Contact', href: '/contact' },
+];
+
+function isActive(href: string): boolean {
+  if (href === '/') return currentPath === '/';
+  return currentPath.startsWith(href);
+}
+---
+
+<nav aria-label="Main navigation">
+  <button
+    id="nav-toggle"
+    class="md:hidden p-2 text-primary"
+    aria-expanded="false"
+    aria-controls="nav-menu"
+    aria-label="Toggle navigation menu"
+  >
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  </button>
+
+  <ul
+    id="nav-menu"
+    class="hidden md:flex flex-col md:flex-row md:flex-wrap gap-1 md:gap-0 md:items-center"
+  >
+    {navItems.map((item) => (
+      <li class={`relative group ${item.children ? 'has-dropdown' : ''}`}>
+        <a
+          href={item.href}
+          class:list={[
+            'block px-3 py-2 text-sm font-medium rounded transition-colors',
+            isActive(item.href)
+              ? 'text-primary bg-primary/10'
+              : 'text-text-muted hover:text-primary hover:bg-primary/5',
+          ]}
+          aria-current={isActive(item.href) ? 'page' : undefined}
+        >
+          {item.label}
+        </a>
+        {item.children && (
+          <ul class="md:absolute md:left-0 md:top-full md:hidden md:group-hover:block md:bg-white md:shadow-lg md:rounded md:min-w-48 md:py-1 md:z-40 pl-4 md:pl-0">
+            {item.children.map((child) => (
+              <li>
+                <a
+                  href={child.href}
+                  class:list={[
+                    'block px-4 py-2 text-sm transition-colors',
+                    isActive(child.href)
+                      ? 'text-primary bg-primary/10'
+                      : 'text-text-muted hover:text-primary hover:bg-primary/5',
+                  ]}
+                >
+                  {child.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('nav-menu');
+  toggle?.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    menu?.classList.toggle('hidden');
+  });
+</script>

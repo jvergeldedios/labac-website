@@ -1,0 +1,39 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { getCollection } from 'astro:content';
+
+const meetings = (await getCollection('minutes', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<PageLayout title="Agendas & Minutes" description="Archive of LABAC meeting agendas and minutes.">
+  <p class="text-text-muted mb-6">
+    Meeting agendas and minutes from past LABAC meetings.
+  </p>
+
+  {meetings.length === 0 ? (
+    <p class="text-text-muted">No meeting records yet.</p>
+  ) : (
+    <div class="space-y-4">
+      {meetings.map((meeting) => (
+        <div class="border border-border rounded-lg p-4">
+          <h2 class="font-semibold text-primary">{meeting.data.title}</h2>
+          <time class="text-sm text-text-muted" datetime={meeting.data.date.toISOString()}>
+            {meeting.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </time>
+          <span class="ml-2 text-xs uppercase tracking-wide text-text-muted bg-gray-100 px-2 py-0.5 rounded">
+            {meeting.data.meetingType}
+          </span>
+          <div class="flex gap-3 mt-2 text-sm">
+            {meeting.data.agendaUrl && (
+              <a href={meeting.data.agendaUrl} class="text-primary hover:underline" target="_blank" rel="noopener">Agenda (PDF)</a>
+            )}
+            {meeting.data.minutesUrl && (
+              <a href={meeting.data.minutesUrl} class="text-primary hover:underline" target="_blank" rel="noopener">Minutes (PDF)</a>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  )}
+</PageLayout>

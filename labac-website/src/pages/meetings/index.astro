@@ -1,0 +1,35 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+---
+
+<PageLayout title="Meeting Schedule" description="LABAC meeting schedule and information.">
+  <p class="text-lg text-text-muted mb-6">
+    LABAC meets on the first Tuesday of every even-numbered month at 7:00 PM.
+  </p>
+
+  <div class="bg-primary/5 border border-primary/20 rounded-lg p-6 mb-8">
+    <h2 class="text-lg font-semibold text-primary mb-2">Next Meeting</h2>
+    <p class="text-text-muted">Coming soon — check back for the next meeting date.</p>
+  </div>
+
+  <h2 class="text-xl font-semibold text-primary mt-8 mb-3">Schedule</h2>
+  <p class="text-text-muted mb-2">Meetings are held in even-numbered months:</p>
+  <ul class="list-disc pl-6 text-text-muted space-y-1 mb-6">
+    <li>February</li>
+    <li>April</li>
+    <li>June</li>
+    <li>August</li>
+    <li>October</li>
+    <li>December</li>
+  </ul>
+
+  <h2 class="text-xl font-semibold text-primary mt-8 mb-3">Location</h2>
+  <p class="text-text-muted mb-4">
+    Los Angeles City Hall<br />
+    200 N Spring St, Los Angeles, CA 90012
+  </p>
+
+  <p class="text-text-muted">
+    Looking for agendas and minutes? Visit the <a href="/meetings/minutes" class="text-primary hover:underline">Agendas & Minutes</a> page.
+  </p>
+</PageLayout>
