@@ -1,5 +1,6 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
+import { url } from '../utils/paths';
 ---
 
 <PageLayout title="Mission Statement" description="Learn about the Los Angeles Bicycle Advisory Committee, its mission, and history since 1973.">
@@ -32,8 +33,8 @@ import PageLayout from '../layouts/PageLayout.astro';
 
   <h2 class="text-xl font-semibold text-primary mt-8 mb-3">Key Documents</h2>
   <ul class="list-disc pl-6 text-text-muted space-y-2">
-    <li><a href="/documents/labac/charter.pdf" class="text-primary hover:underline" target="_blank" rel="noopener">LABAC Charter</a></li>
-    <li><a href="/documents/labac/strategic-plan-2023.pdf" class="text-primary hover:underline" target="_blank" rel="noopener">Strategic Plan 2023</a></li>
-    <li><a href="/documents/labac/resource-guide.pdf" class="text-primary hover:underline" target="_blank" rel="noopener">Bicycling Resource Guide A-to-Z</a></li>
+    <li><a href={url('/documents/labac/charter.pdf')} class="text-primary hover:underline" target="_blank" rel="noopener">LABAC Charter</a></li>
+    <li><a href={url('/documents/labac/strategic-plan-2023.pdf')} class="text-primary hover:underline" target="_blank" rel="noopener">Strategic Plan 2023</a></li>
+    <li><a href={url('/documents/labac/resource-guide.pdf')} class="text-primary hover:underline" target="_blank" rel="noopener">Bicycling Resource Guide A-to-Z</a></li>
   </ul>
 </PageLayout>

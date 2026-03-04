@@ -1,5 +1,6 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
+import { url } from '../../utils/paths';
 
 const laClubs = [
   { name: 'Antelope Valley High Desert Cyclists', location: 'Palmdale', url: 'http://www.highdesertcyclists.com/' },
@@ -134,6 +135,6 @@ const nationalOrgs = [
   </ul>
 
   <div class="mt-8">
-    <a href="/resources" class="text-primary hover:underline">&larr; Back to Resources</a>
+    <a href={url('/resources')} class="text-primary hover:underline">&larr; Back to Resources</a>
   </div>
 </PageLayout>

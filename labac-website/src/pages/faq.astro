@@ -1,5 +1,6 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
+import { url } from '../utils/paths';
 ---
 
 <PageLayout title="FAQ" description="Frequently asked questions about the Los Angeles Bicycle Advisory Committee.">
@@ -31,7 +32,7 @@ import PageLayout from '../layouts/PageLayout.astro';
 
     <div>
       <h2 class="text-lg font-semibold text-primary mb-2">How do I request a bike lane or report an issue?</h2>
-      <p class="text-text-muted">You can submit a request to LADOT or bring the issue to LABAC during public comment at a meeting. See our <a href="/resources" class="text-primary hover:underline">Resources</a> page for more options.</p>
+      <p class="text-text-muted">You can submit a request to LADOT or bring the issue to LABAC during public comment at a meeting. See our <a href={url('/resources')} class="text-primary hover:underline">Resources</a> page for more options.</p>
     </div>
   </div>
 </PageLayout>

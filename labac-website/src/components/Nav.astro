@@ -1,45 +1,47 @@
 ---
+import { url } from '../utils/paths';
+
 const currentPath = Astro.url.pathname;
 
 const navItems = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
+  { label: 'Home', href: url('/') },
+  { label: 'About', href: url('/about') },
   {
     label: 'Meetings',
-    href: '/meetings',
+    href: url('/meetings'),
     children: [
-      { label: 'Schedule', href: '/meetings' },
-      { label: 'Agendas & Minutes', href: '/meetings/minutes' },
-      { label: 'Council Files', href: '/meetings/council-files' },
+      { label: 'Schedule', href: url('/meetings') },
+      { label: 'Agendas & Minutes', href: url('/meetings/minutes') },
+      { label: 'Council Files', href: url('/meetings/council-files') },
     ],
   },
   {
     label: 'Sub-Committees',
-    href: '/committees',
+    href: url('/committees'),
     children: [
-      { label: 'Planning & Bikeways', href: '/committees/planning' },
-      { label: 'Advocacy & Education', href: '/committees/advocacy' },
+      { label: 'Planning & Bikeways', href: url('/committees/planning') },
+      { label: 'Advocacy & Education', href: url('/committees/advocacy') },
     ],
   },
-  { label: 'Members', href: '/members' },
+  { label: 'Members', href: url('/members') },
   {
     label: 'Resources',
-    href: '/resources',
+    href: url('/resources'),
     children: [
-      { label: 'General Resources', href: '/resources' },
-      { label: 'Classifications', href: '/resources/classifications' },
-      { label: 'Bicycle Clubs', href: '/resources/clubs' },
-      { label: 'Maps & Routes', href: '/maps' },
+      { label: 'General Resources', href: url('/resources') },
+      { label: 'Classifications', href: url('/resources/classifications') },
+      { label: 'Bicycle Clubs', href: url('/resources/clubs') },
+      { label: 'Maps & Routes', href: url('/maps') },
     ],
   },
-  { label: 'Get Involved', href: '/get-involved' },
-  { label: 'News', href: '/news' },
-  { label: 'Events', href: '/events' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Get Involved', href: url('/get-involved') },
+  { label: 'News', href: url('/news') },
+  { label: 'Events', href: url('/events') },
+  { label: 'Contact', href: url('/contact') },
 ];
 
 function isActive(href: string): boolean {
-  if (href === '/') return currentPath === '/';
+  if (href === url('/')) return currentPath === url('/');
   return currentPath.startsWith(href);
 }
 ---

@@ -4,7 +4,8 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://labikecommittee.org',
+  site: 'https://jvergeldedios.github.io',
+  base: '/labac-website',
   vite: {
     plugins: [tailwindcss()],
   },

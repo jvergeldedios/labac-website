@@ -1,4 +1,6 @@
 ---
+import { url } from '../utils/paths';
+
 interface Props {
   title: string;
   description?: string;
@@ -11,8 +13,8 @@ const pageTitle = title === 'Home' ? 'LABAC — Los Angeles Bicycle Advisory Com
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content={Astro.generator} />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="icon" href="/favicon.ico" />
+<link rel="icon" type="image/svg+xml" href={url('/favicon.svg')} />
+<link rel="icon" href={url('/favicon.ico')} />
 <title>{pageTitle}</title>
 <meta name="description" content={description} />
 <meta property="og:title" content={pageTitle} />

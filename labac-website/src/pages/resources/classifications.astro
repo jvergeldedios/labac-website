@@ -1,5 +1,6 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
+import { url } from '../../utils/paths';
 
 const resources = [
   { name: 'Guide to Parts and Machinery of a Bicycle', url: 'http://www.visualdictionaryonline.com/transport-machinery/road-transport/bicycle/parts-bicycle.php' },
@@ -26,6 +27,6 @@ const resources = [
   </ul>
 
   <div class="mt-8">
-    <a href="/resources" class="text-primary hover:underline">&larr; Back to Resources</a>
+    <a href={url('/resources')} class="text-primary hover:underline">&larr; Back to Resources</a>
   </div>
 </PageLayout>

@@ -1,5 +1,6 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
+import { url } from '../../utils/paths';
 ---
 
 <PageLayout title="Resources" description="Bicycle transportation resources, guides, and organizations for Los Angeles.">
@@ -9,10 +10,10 @@ import PageLayout from '../../layouts/PageLayout.astro';
 
   <h2 class="text-xl font-semibold text-primary mt-8 mb-3">LABAC Committee Documents</h2>
   <ul class="list-disc pl-6 text-text-muted space-y-2 mb-6">
-    <li><a href="/documents/labac/charter.pdf" class="text-primary hover:underline" target="_blank" rel="noopener">LABAC Charter</a></li>
-    <li><a href="/documents/labac/strategic-plan-2023.pdf" class="text-primary hover:underline" target="_blank" rel="noopener">LABAC Strategic Plan 2023</a></li>
-    <li><a href="/documents/labac/resource-guide.pdf" class="text-primary hover:underline" target="_blank" rel="noopener">Bicycling Resource Guide A-to-Z</a></li>
-    <li><a href="/documents/labac/aashto-bike-guide-overview.pdf" class="text-primary hover:underline" target="_blank" rel="noopener">AASHTO Bike Guide Overview (Part One)</a></li>
+    <li><a href={url('/documents/labac/charter.pdf')} class="text-primary hover:underline" target="_blank" rel="noopener">LABAC Charter</a></li>
+    <li><a href={url('/documents/labac/strategic-plan-2023.pdf')} class="text-primary hover:underline" target="_blank" rel="noopener">LABAC Strategic Plan 2023</a></li>
+    <li><a href={url('/documents/labac/resource-guide.pdf')} class="text-primary hover:underline" target="_blank" rel="noopener">Bicycling Resource Guide A-to-Z</a></li>
+    <li><a href={url('/documents/labac/aashto-bike-guide-overview.pdf')} class="text-primary hover:underline" target="_blank" rel="noopener">AASHTO Bike Guide Overview (Part One)</a></li>
   </ul>
 
   <h2 class="text-xl font-semibold text-primary mt-8 mb-3">Committee Resource Manual</h2>
@@ -45,7 +46,7 @@ import PageLayout from '../../layouts/PageLayout.astro';
     <li><a href="https://bikeshare.metro.net/" class="text-primary hover:underline" target="_blank" rel="noopener">Metro LA Bike Share Program (E-bikes)</a></li>
     <li><a href="http://bike.lacity.org/" class="text-primary hover:underline" target="_blank" rel="noopener">LADOT Bicycle Program</a></li>
     <li><a href="https://la-bike.org/" class="text-primary hover:underline" target="_blank" rel="noopener">Los Angeles County Bicycle Coalition</a></li>
-    <li><a href="/documents/labac/mobility-plan-2035.pdf" class="text-primary hover:underline" target="_blank" rel="noopener">Mobility Plan 2035</a></li>
+    <li><a href={url('/documents/labac/mobility-plan-2035.pdf')} class="text-primary hover:underline" target="_blank" rel="noopener">Mobility Plan 2035</a></li>
     <li><a href="http://visionzero.lacity.org/" class="text-primary hover:underline" target="_blank" rel="noopener">Vision Zero 2025</a></li>
     <li><a href="http://lagreatstreets.org/" class="text-primary hover:underline" target="_blank" rel="noopener">Great Streets Initiative</a></li>
   </ul>
@@ -72,8 +73,8 @@ import PageLayout from '../../layouts/PageLayout.astro';
   </ul>
 
   <div class="mt-8 flex gap-4 text-sm">
-    <a href="/resources/classifications" class="text-primary hover:underline">Bicycle Classifications &rarr;</a>
-    <a href="/resources/clubs" class="text-primary hover:underline">Bicycle Clubs &rarr;</a>
-    <a href="/maps" class="text-primary hover:underline">Maps &amp; Routes &rarr;</a>
+    <a href={url('/resources/classifications')} class="text-primary hover:underline">Bicycle Classifications &rarr;</a>
+    <a href={url('/resources/clubs')} class="text-primary hover:underline">Bicycle Clubs &rarr;</a>
+    <a href={url('/maps')} class="text-primary hover:underline">Maps &amp; Routes &rarr;</a>
   </div>
 </PageLayout>

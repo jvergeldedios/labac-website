@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import { url } from '../utils/paths';
 
 interface Props {
   title: string;
@@ -15,7 +16,7 @@ const {
   description,
   date,
   author,
-  backHref = '/news',
+  backHref = url('/news'),
   backLabel = 'Back to News',
 } = Astro.props;
 ---

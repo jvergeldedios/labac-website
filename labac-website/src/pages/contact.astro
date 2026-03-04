@@ -1,5 +1,6 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
+import { url } from '../utils/paths';
 ---
 
 <PageLayout title="Contact" description="Get in touch with the Los Angeles Bicycle Advisory Committee.">
@@ -24,7 +25,7 @@ import PageLayout from '../layouts/PageLayout.astro';
     Los Angeles, CA 90028
   </p>
   <p class="text-text-muted mb-4">
-    Sub-committees meet during odd months. Check the <a href="/meetings" class="text-primary hover:underline">meetings page</a> for details.
+    Sub-committees meet during odd months. Check the <a href={url('/meetings')} class="text-primary hover:underline">meetings page</a> for details.
   </p>
 
   <h2 class="text-xl font-semibold text-primary mt-8 mb-3">Follow Us</h2>
